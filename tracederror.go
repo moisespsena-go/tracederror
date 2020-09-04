@@ -75,6 +75,8 @@ func Traced(err interface{}) TracedError {
 		return t
 	case error:
 		return New(t)
+	case string:
+		return New(errors.New(t))
 	default:
 		return New(fmt.Errorf("error::%T = %v", err))
 	}
